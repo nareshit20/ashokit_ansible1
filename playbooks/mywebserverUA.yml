@@ -1,0 +1,27 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: install webserver(apache2) on ubuntu20 node1
+    apt:
+     name: apache2
+     state: present
+    when: ansible_os_family == "Debian"
+
+  - name: start the apache2 service
+    service:
+     name: apache2
+     state: started
+    when: ansible_os_family == "Debian" 
+
+  - name: install webserver(httpd) on amazonlinux2 node2
+    yum:
+     name: httpd
+     state: present
+    when: ansible_os_family == "RedHat"
+
+  - name: start httpd service
+    service:
+     name: httpd
+     state: started
+    when: ansible_os_family == "RedHat"
