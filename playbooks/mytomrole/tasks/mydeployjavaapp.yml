@@ -1,0 +1,6 @@
+---
+- name: i want to deploy ravi java war file into webapps  
+  get_url:
+   url: 
+   dest: /usr/share/tomcat/webapps/raviLogin.war
+   force_basic_auth: yes
